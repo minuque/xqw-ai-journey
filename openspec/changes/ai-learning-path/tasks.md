@@ -13,10 +13,10 @@
 
 ### 1.1 Python 环境与工具链
 
-- [ ] 安装 Python 3.12+ 和 uv 包管理工具
-- [ ] 使用 `uv init` 创建第一个项目，理解项目结构
-- [ ] 理解 pyproject.toml、uv.lock、虚拟环境的作用
-- [ ] 配置 VS Code Python 开发环境（插件、格式化、类型检查）
+- [x] 安装 Python 3.12+ 和 uv 包管理工具
+- [x] 使用 `uv init` 创建第一个项目，理解项目结构
+- [x] 理解 pyproject.toml、uv.lock、虚拟环境的作用
+- [x] 配置 VS Code Python 开发环境（插件、格式化、类型检查）
 
 ### 1.2 Python 语法快速上手
 
