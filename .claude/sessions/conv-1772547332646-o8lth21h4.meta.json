@@ -1,0 +1,20 @@
+{
+  "id": "conv-1772547332646-o8lth21h4",
+  "title": "User greeting",
+  "titleGenerationStatus": "success",
+  "createdAt": 1772547332646,
+  "updatedAt": 1772626022779,
+  "lastResponseAt": 1772548898950,
+  "sessionId": "baa7ebfb-e3b4-485b-becc-147bf9e4d5fe",
+  "sdkSessionId": "baa7ebfb-e3b4-485b-becc-147bf9e4d5fe",
+  "currentNote": "docs/2026-03-03.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 139,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 19159,
+    "contextWindow": 200000,
+    "contextTokens": 19298,
+    "percentage": 10
+  }
+}

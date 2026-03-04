@@ -87,7 +87,6 @@ xqw-ai-journey/
 **模板结构**：
 ```markdown
 ---
-date: YYYY-MM-DD
 tags: [python, fastapi, learning, ...]
 stage: 阶段X-XXX
 ---
@@ -279,30 +278,31 @@ Claude：
 - **核心产出**：FastAPI + Vue3 TODO 应用（含 SSE 流式）
 - **知识沉淀**：`specs/python-fastapi-foundation/spec.md`
 
-### 阶段 2: Claude API 对接
-- **任务数**：10 个
-- **核心产出**：完整 AI 聊天应用（流式、多轮、Tool Use、Vision）
-- **知识沉淀**：`specs/claude-api-integration/spec.md`
+### 阶段 2: LLM API 对接与本地部署
+- **任务数**：15 个核心任务
+- **核心产出**：支持云端+本地的 AI 聊天应用（OpenAI、Claude、Ollama）
+- **知识沉淀**：`specs/llm-api-integration/spec.md`
 
-### 阶段 3: Prompt 工程
-- **任务数**：12 个
-- **核心产出**：Prompt 管理工具或数据提取工具
+### 阶段 3: Prompt 工程与上下文管理
+- **任务数**：10 个
+- **核心产出**：RAG 专用 Prompt 模板库
 - **知识沉淀**：`specs/prompt-engineering/spec.md`
 
-### 阶段 4: RAG 系统
-- **任务数**：15 个
-- **核心产出**：完整知识库问答系统
+### 阶段 4: RAG 系统核心技术
+- **任务数**：18 个
+- **核心产出**：完整的知识库问答 API
 - **知识沉淀**：`specs/rag-system/spec.md`
 
-### 阶段 5: Agent 工作流
-- **任务数**：12 个
-- **核心产出**：复杂 Agent 工作流应用
-- **知识沉淀**：`specs/agent-workflow/spec.md`
+### 阶段 5: LangChain 实战与应用集成
+- **任务数**：15 个
+- **核心产出**：LangChain 驱动的知识库应用（含 Streamlit UI）
+- **知识沉淀**：`specs/langchain-application/spec.md`
 
-### 最终冲刺: 综合实战
-- **任务数**：根据项目而定
-- **核心产出**：可演示、可落地的 AI 应用
-- **项目选项**：智能文档助手 / 代码 Review 助手 / 数据分析 Agent / 知识管理系统
+### 最终冲刺: Langchain-Chatchat MVP
+- **任务数**：根据项目规划而定
+- **核心产出**：类似 Langchain-Chatchat 的本地知识库问答系统
+- **技术栈**：FastAPI + Claude API + LangChain + Chroma + Streamlit
+- **核心功能**：文档上传、知识库管理、智能问答、多轮对话、引用溯源
 
 ---
 
@@ -398,3 +398,8 @@ Claude：
 - 不要忽略"与前端经验对比"，这是加速理解的关键
 
 ---
+
+## 📝 更新日志
+
+- **2026-03-04**: 基于 Langchain-Chatchat 项目重新规划阶段 3-5，目标调整为构建知识库问答系统 MVP
+- **2026-03-03**: 初始版本，确定学习工作流设计

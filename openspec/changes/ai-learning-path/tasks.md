@@ -76,63 +76,85 @@
 
 ---
 
-## 🤖 阶段 2: Claude API 对接
+## 🤖 阶段 2: LLM API 对接与本地部署
 
-**目标**: 掌握 Claude API 完整使用，实现 AI 对话应用
+**目标**: 掌握通用 LLM API，实现云端+本地模型的灵活切换
 
-### 2.1 Claude API 基础
+### 2.1 OpenAI API 标准接口
 
-- [ ] 注册 Anthropic 账号，获取 API Key
-- [ ] 安装 `anthropic` Python SDK
-- [ ] 实现第一个 Messages API 调用（同步）
-- [ ] 理解 Claude 的 messages 数组结构（role、content）
-- [ ] 练习 system prompt 设计（角色、约束）
-- [ ] 测试不同模型（claude-3-5-sonnet、claude-3-5-haiku）
+- [ ] 注册 OpenAI 账号，获取 API Key（或使用第三方兼容服务）
+- [ ] 安装 `openai` Python SDK
+- [ ] 理解 OpenAI API 的标准结构（Chat Completions）
+- [ ] 实现第一个 Chat API 调用（同步）
+- [ ] 理解 messages 数组结构（role: system/user/assistant）
+- [ ] 练习 system prompt 设计
+- [ ] 测试不同模型（gpt-4o-mini、gpt-4o）
 
-### 2.2 流式响应
+### 2.2 流式响应与多轮对话
 
 - [ ] 理解 Streaming 工作原理（SSE 协议）
-- [ ] 实现 Claude Streaming API 调用
+- [ ] 实现 OpenAI Streaming API 调用（stream=True）
 - [ ] 通过 FastAPI StreamingResponse 转发流式响应
 - [ ] 前端使用 EventSource 接收流式响应
 - [ ] 实现打字机效果的 AI 回复界面
-
-### 2.3 多轮对话
-
 - [ ] 设计对话历史存储结构（messages 数组）
 - [ ] 实现多轮对话上下文管理（累积 messages）
 - [ ] 实现对话历史截断策略（Token 预算管理）
-- [ ] 实现对话重置、删除功能
-- [ ] 前端实现对话列表、对话切换
 
-### 2.4 Tool Use (函数调用)
+### 2.3 Claude API 高级特性
 
-- [ ] 学习 Claude Tool Use 工作原理（tool_use / tool_result）
-- [ ] 定义第一个工具 schema（get_weather）
-- [ ] 实现工具调用循环：LLM 请求 → 执行工具 → 返回结果 → LLM 继续
-- [ ] 实现多个工具（搜索、计算器、数据查询）
-- [ ] 实现工具调用的前端可视化（显示工具调用过程）
+- [ ] 注册 Anthropic 账号，获取 API Key
+- [ ] 安装 `anthropic` Python SDK
+- [ ] 对比 Claude API 与 OpenAI API 的差异
+- [ ] 学习 Claude Tool Use（函数调用）
+- [ ] 定义工具 schema，实现工具调用循环
+- [ ] 学习 Claude Vision（多模态）
+- [ ] 实现图片上传与多模态对话
+- [ ] 测试 Claude 特有功能（Extended Thinking、Prefill）
 
-### 2.5 Vision 多模态
+### 2.4 Ollama 本地模型部署
 
-- [ ] 学习 Claude Vision 的 content 数组结构
-- [ ] 实现图片上传接口（base64 编码）
-- [ ] 实现图片 + 文本的多模态对话
-- [ ] 测试图片理解、OCR、图表分析场景
-- [ ] 前端实现图片上传与预览
+- [ ] 安装 Ollama（官方下载或 Docker）
+- [ ] 理解 Ollama 工作原理（本地模型服务）
+- [ ] 下载并运行第一个模型（qwen2.5:7b 或 llama3.2:3b）
+- [ ] 学习 Ollama CLI 命令（ollama run、ollama list、ollama pull）
+- [ ] 理解 Ollama 的 OpenAI 兼容接口
+- [ ] 通过 OpenAI SDK 调用 Ollama 本地模型
+- [ ] 测试不同本地模型（Qwen、Llama、Mistral）
+- [ ] 对比本地模型与云端模型的效果和速度
+
+### 2.5 模型切换与统一接口封装
+
+- [ ] 设计统一的 LLM 调用接口（抽象层）
+- [ ] 实现配置化的模型切换（配置文件或环境变量）
+- [ ] 封装 OpenAI、Claude、Ollama 三种后端
+- [ ] 实现统一的流式响应处理
+- [ ] 实现统一的错误处理和重试机制
+- [ ] 前端实现模型选择器（下拉菜单）
+- [ ] 测试模型切换的无缝性
+
+### 2.6 本地端到端联调
+
+- [ ] 完整测试：Vue3 前端 → FastAPI 后端 → Ollama 本地模型
+- [ ] 验证流式输出在本地模型下的表现
+- [ ] 验证多轮对话在本地模型下的表现
+- [ ] 优化本地模型的响应速度（GPU 加速、量化模型）
+- [ ] 实现本地模型的健康检查（自动启动/重连）
+- [ ] 编写本地部署文档（环境要求、启动步骤）
 
 ### ✅ 阶段 2 完成标志
 
-- [ ] 完成一个功能完整的 AI 聊天应用
-- [ ] 支持流式输出、多轮对话、Tool Use、Vision
-- [ ] 前端界面美观、交互流畅
-- [ ] 沉淀学习笔记到 `specs/claude-api-integration/spec.md`
+- [ ] 完成一个支持云端+本地的 AI 聊天应用
+- [ ] 支持 OpenAI、Claude、Ollama 三种后端
+- [ ] 支持流式输出、多轮对话、模型切换
+- [ ] 实现完整的本地端到端联调
+- [ ] 沉淀学习笔记到 `specs/llm-api-integration/spec.md`
 
 ---
 
-## 🎨 阶段 3: Prompt 工程
+## 🎨 阶段 3: Prompt 工程与上下文管理
 
-**目标**: 系统掌握 Prompt 设计技巧，提升 AI 输出质量
+**目标**: 掌握实用 Prompt 技巧，为 RAG 系统做准备
 
 ### 3.1 核心 Prompt 技巧
 
@@ -155,198 +177,251 @@
 - [ ] 学习 XML 标签结构化（&lt;document&gt;、&lt;thinking&gt;）
 - [ ] 学习 Prefill 技巧（assistant 消息预填充）
 - [ ] 学习 Extended Thinking（长思维链）
-- [ ] 学习 Claude 的上下文缓存机制
+- [ ] 学习 Claude 的上下文缓存机制（降低成本）
 - [ ] 测试不同技巧的效果差异
 
-### 3.4 Prompt 管理
+### 3.4 上下文窗口管理
 
-- [ ] 设计 Prompt 模板管理方案（文件、数据库）
-- [ ] 实现 Prompt 变量替换（Jinja2 或自定义）
-- [ ] 设计 Prompt 版本管理方案
-- [ ] 建立 Prompt 效果评估流程
-- [ ] 记录 Prompt 迭代历史
+- [ ] 理解 Token 计算与限制
+- [ ] 实现上下文长度估算（tiktoken 或 Claude API）
+- [ ] 实现上下文截断策略（保留最新/最相关）
+- [ ] 实现滑动窗口对话历史管理
+- [ ] 测试不同截断策略对对话质量的影响
 
-### 3.5 实战练习
+### 3.5 RAG Prompt 设计
 
-- [ ] 实现一个数据提取工具（从非结构化文本提取结构化数据）
-- [ ] 实现一个文本分类工具（情感分析、意图识别）
-- [ ] 实现一个文本生成工具（邮件、文章、代码注释）
-- [ ] 对比不同 Prompt 设计的效果差异
+- [ ] 学习 RAG Prompt 结构（系统提示 + 检索上下文 + 用户问题）
+- [ ] 设计上下文拼接模板（文档来源标注）
+- [ ] 实现"基于上下文回答"的提示工程
+- [ ] 处理检索内容不足的情况（承认不知道）
+- [ ] 实现引用来源的 Prompt 引导
 
 ### ✅ 阶段 3 完成标志
 
-- [ ] 完成一个 Prompt 管理工具或数据提取工具
+- [ ] 完成一个 RAG Prompt 模板库
 - [ ] 掌握 Few-shot、CoT、结构化输出等核心技巧
-- [ ] 建立 Prompt 迭代与评估的方法论
+- [ ] 理解上下文窗口管理策略
 - [ ] 沉淀学习笔记到 `specs/prompt-engineering/spec.md`
 
 ---
 
-## 📚 阶段 4: RAG 系统
+## 📚 阶段 4: RAG 系统核心技术
 
-**目标**: 从零搭建完整 RAG 系统，掌握知识库问答
+**目标**: 从零搭建完整 RAG 系统，掌握知识库问答核心能力
 
-### 4.1 Embedding 与向量检索
+### 4.1 Embedding 与向量检索基础
 
-- [ ] 学习 Embedding 原理（向量化表示）
+- [ ] 学习 Embedding 原理（文本向量化表示）
 - [ ] 注册 Voyage AI，获取 API Key
 - [ ] 使用 Voyage Embedding API 将文本向量化
+- [ ] 理解余弦相似度计算原理
+- [ ] 手写一个简单的向量检索（NumPy 实现）
+
+### 4.2 Chroma 向量数据库
+
 - [ ] 安装 Chroma 向量数据库
+- [ ] 理解 Collection 概念（类比数据库表）
 - [ ] 实现向量的增删改查操作
-- [ ] 实现基于余弦相似度的向量检索
+- [ ] 实现基于相似度的向量检索（top k）
+- [ ] 学习元数据过滤（metadata filter）
+- [ ] 实现持久化存储（本地文件）
 
-### 4.2 文档处理
+### 4.3 文档处理与解析
 
-- [ ] 安装 Unstructured/PyMuPDF 文档解析库
+- [ ] 安装 PyMuPDF（PDF 解析）
 - [ ] 实现 PDF 文档解析，提取文本
-- [ ] 实现 Markdown/HTML 文档解析
-- [ ] 实现文档上传接口（批量处理）
-- [ ] 设计文档元数据存储结构（标题、作者、时间）
+- [ ] 实现 Markdown 文档解析
+- [ ] 实现 TXT 文档解析
+- [ ] 设计文档元数据结构（文件名、页码、时间戳）
+- [ ] 实现文档上传接口（FastAPI）
 
-### 4.3 分块策略
+### 4.4 文本分块策略
 
-- [ ] 理解分块的重要性（检索粒度、上下文完整性）
+- [ ] 理解分块的重要性（检索粒度 vs 上下文完整性）
 - [ ] 实现固定长度分块（Character Splitter）
-- [ ] 实现递归分块（Recursive Splitter）
-- [ ] 实现语义分块（Semantic Splitter）
-- [ ] 实现分块重叠策略（Overlap）
+- [ ] 实现递归分块（Recursive Splitter，按段落/句子）
+- [ ] 实现分块重叠策略（Overlap，保证上下文连续）
+- [ ] 为每个 chunk 添加元数据（来源文档、页码）
 - [ ] 对比不同分块策略的效果
 
-### 4.4 基础 RAG 实现
+### 4.5 基础 RAG 流程实现
 
-- [ ] 实现基础 RAG 流程：用户提问 → 向量检索 → 拼接上下文 → LLM 生成
-- [ ] 实现 Token 预算管理（控制上下文长度）
-- [ ] 实现引用来源标注（返回 chunk 来源文档）
-- [ ] 前端实现引用溯源高亮显示
-- [ ] 测试基础 RAG 的效果
+- [ ] 实现文档上传 → 分块 → 向量化 → 存储流程
+- [ ] 实现用户提问 → 向量检索 → 获取 top k chunks
+- [ ] 实现上下文拼接（chunk 内容 + 来源信息）
+- [ ] 实现 Token 预算管理（控制上下文总长度）
+- [ ] 将上下文 + 问题发送给 Claude 生成答案
+- [ ] 测试基础 RAG 效果
 
-### 4.5 检索优化
+### 4.6 引用溯源
+
+- [ ] 在 RAG 响应中返回 chunk 来源信息
+- [ ] 实现引用来源的格式化输出（文档名、页码）
+- [ ] 通过 Prompt 引导 Claude 标注引用
+- [ ] 前端实现引用高亮显示（可选）
+- [ ] 测试引用准确性
+
+### 4.7 检索优化
 
 - [ ] 实现 Query 改写（使用 Claude 优化用户查询）
-- [ ] 实现 HyDE（生成假设性文档用于检索）
-- [ ] 实现混合检索（向量检索 + BM25 关键词检索）
-- [ ] 集成 Cohere/Voyage Rerank 重排序
+- [ ] 实现 HyDE（生成假设性答案用于检索）
+- [ ] 集成 Voyage Rerank 重排序（提升检索精度）
+- [ ] 实现多路检索（同时检索多个知识库）
 - [ ] 对比优化前后的检索效果
 
-### 4.6 RAG 评估
+### 4.8 知识库管理
 
-- [ ] 安装 RAGAS 评估框架
-- [ ] 设计评估数据集（问题、参考答案、参考上下文）
-- [ ] 评估检索准确率、召回率
-- [ ] 评估答案忠实度、相关性
-- [ ] 基于评估结果调优参数
-
-### 4.7 向量数据库升级
-
-- [ ] 安装 Qdrant（Docker 部署）
-- [ ] 迁移 Chroma 数据到 Qdrant
-- [ ] 学习 Qdrant 的高级特性（过滤、分组）
-- [ ] 对比 Chroma 与 Qdrant 的性能差异
+- [ ] 设计知识库结构（一个知识库 = 一个 Collection）
+- [ ] 实现知识库创建、删除、列表查询
+- [ ] 实现知识库文档管理（添加、删除文档）
+- [ ] 实现知识库统计（文档数、chunk 数）
+- [ ] 前端实现知识库切换功能
 
 ### ✅ 阶段 4 完成标志
 
-- [ ] 完成一个功能完整的知识库问答系统
+- [ ] 完成一个功能完整的知识库问答 API
 - [ ] 支持文档上传、向量检索、引用溯源
-- [ ] 实现检索优化（Query 改写、Rerank）
-- [ ] 建立 RAG 评估方法论
+- [ ] 实现至少一种检索优化技术
+- [ ] 具备知识库管理能力
 - [ ] 沉淀学习笔记到 `specs/rag-system/spec.md`
 
 ---
 
-## 🤖 阶段 5: Agent 工作流
+## 🤖 阶段 5: LangChain 实战与应用集成
 
-**目标**: 掌握 LangChain/LangGraph，构建复杂 Agent 系统
+**目标**: 使用 LangChain 重构 RAG 系统，构建完整知识库应用
 
-### 5.1 LangChain 基础
+### 5.1 LangChain 核心概念
 
 - [ ] 安装 LangChain 和 LangChain-Anthropic
+- [ ] 理解 LangChain 架构（Chain、LLM、Memory）
 - [ ] 学习 LCEL（管道操作符 `|`）
 - [ ] 学习 Prompt Template（模板变量）
-- [ ] 学习 Output Parser（结构化输出解析）
-- [ ] 实现第一个 LCEL 链：Prompt → LLM → Parser
+- [ ] 实现第一个 LCEL 链：Prompt → LLM → Output
 
-### 5.2 LangChain Tool 集成
+### 5.2 LangChain + Claude 集成
 
+- [ ] 使用 ChatAnthropic 封装 Claude API
+- [ ] 实现流式输出（LangChain Streaming）
+- [ ] 集成 Prompt Template 与 Claude
+- [ ] 实现结构化输出解析（Output Parser）
+- [ ] 测试与原生 API 的对比
+
+### 5.3 使用 LangChain 重构 RAG
+
+- [ ] 使用 LangChain 的 VectorStore 封装 Chroma
+- [ ] 使用 LangChain 的 Embeddings 封装 Voyage
+- [ ] 使用 LangChain 的 Document Loader 加载文档
+- [ ] 使用 LangChain 的 Text Splitter 分块
+- [ ] 使用 RetrievalQA Chain 实现 RAG
+- [ ] 对比手写 RAG 与 LangChain RAG 的差异
+
+### 5.4 对话历史管理（Memory）
+
+- [ ] 学习 LangChain Memory 概念
+- [ ] 实现 ConversationBufferMemory（缓存所有历史）
+- [ ] 实现 ConversationBufferWindowMemory（滑动窗口）
+- [ ] 实现 ConversationSummaryMemory（摘要压缩）
+- [ ] 集成 Memory 到 RAG Chain
+- [ ] 实现多轮对话的知识库问答
+
+### 5.5 Agent 与 Tool 集成
+
+- [ ] 学习 LangChain Agent 概念（ReAct）
 - [ ] 使用 `@tool` 装饰器定义自定义工具
-- [ ] 实现工具描述、类型化输入输出
-- [ ] 集成 Claude 的 Tool Use 到 LangChain
-- [ ] 实现 ReAct Agent（思考 → 行动 → 观察循环）
-- [ ] 测试多工具场景（搜索、计算、数据库查询）
+- [ ] 定义"知识库检索"工具
+- [ ] 定义"网络搜索"工具（可选）
+- [ ] 定义"计算器"工具（可选）
+- [ ] 创建 Agent 实现多工具调用
+- [ ] 测试 Agent 在复杂问答中的表现
 
-### 5.3 LangGraph 核心概念
+### 5.6 Streamlit UI 构建
 
-- [ ] 学习 LangGraph 的状态图模型（StateGraph）
-- [ ] 定义状态类型（TypedDict / Pydantic）
-- [ ] 实现节点函数（处理状态转换）
-- [ ] 实现边（连接节点）
-- [ ] 实现条件路由（根据状态决定下一步）
+- [ ] 安装 Streamlit
+- [ ] 创建基本的 Streamlit 应用框架
+- [ ] 实现文档上传界面
+- [ ] 实现知识库选择/切换界面
+- [ ] 实现聊天界面（st.chat_message）
+- [ ] 实现流式输出显示
+- [ ] 实现引用来源展示
+- [ ] 优化 UI 美观度
 
-### 5.4 LangGraph 高级模式
+### 5.7 知识库管理功能
 
-- [ ] 实现子图（Subgraph）：将复杂流程分解
-- [ ] 实现循环节点（Loop）：重试、多轮优化
-- [ ] 实现并行节点（Parallel）：同时执行多个任务
-- [ ] 实现 Human-in-the-loop：人工审核节点
-- [ ] 配置 Checkpointer 实现状态持久化
+- [ ] 实现知识库创建界面
+- [ ] 实现知识库删除功能
+- [ ] 实现知识库文档列表展示
+- [ ] 实现文档删除功能
+- [ ] 实现知识库统计信息展示
+- [ ] 实现知识库导出/导入（可选）
 
-### 5.5 多 Agent 协作
+### 5.8 系统优化与完善
 
-- [ ] 设计多 Agent 架构（Researcher、Writer、Reviewer）
-- [ ] 实现 Agent 间通信（共享状态）
-- [ ] 实现 Agent 路由（Supervisor Agent）
-- [ ] 实现 Agent 协作流程（分工、汇总）
-- [ ] 测试多 Agent 协作的效果
-
-### 5.6 监控与调试
-
-- [ ] 注册 LangSmith，配置 API Key
-- [ ] 集成 LangSmith 追踪（自动记录调用链）
-- [ ] 学习 LangSmith 可视化界面（调用链、Token 用量）
-- [ ] 使用 LangSmith 调试 Agent 问题
-- [ ] 建立 Agent 性能监控方案
+- [ ] 实现错误处理和用户友好提示
+- [ ] 实现 Loading 状态展示
+- [ ] 优化长文档处理性能
+- [ ] 实现配置文件管理（API Key、模型选择）
+- [ ] 编写部署文档（本地运行指南）
 
 ### ✅ 阶段 5 完成标志
 
-- [ ] 完成一个复杂的 Agent 工作流应用
-- [ ] 实现多 Agent 协作或 Human-in-the-loop
-- [ ] 使用 LangSmith 监控与调试
-- [ ] 沉淀学习笔记到 `specs/agent-workflow/spec.md`
+- [ ] 完成一个 LangChain 驱动的知识库应用
+- [ ] 具备完整的 Streamlit UI
+- [ ] 支持多轮对话和知识库管理
+- [ ] 代码结构清晰、易于维护
+- [ ] 沉淀学习笔记到 `specs/langchain-application/spec.md`
 
 ---
 
-## 🏆 最终冲刺：综合实战项目
+## 🏆 最终冲刺：Langchain-Chatchat MVP
 
-### 项目方向选择
+**目标**：构建一个类似 Langchain-Chatchat 的本地知识库问答系统
 
-从以下方向中选择 1 个，综合运用所有学到的技能：
+### 项目规划
 
-**选项 A: 智能文档助手**
-- 功能：文档上传、知识库问答、文档摘要、多文档对比
-- 技术：RAG + Tool Use + 流式输出
+- [ ] 确定项目名称和定位
+- [ ] 编写项目需求文档（功能清单、技术栈）
+- [ ] 设计系统架构图
+- [ ] 设计数据库 Schema（如需要）
+- [ ] 规划开发里程碑
 
-**选项 B: 代码 Review 助手**
-- 功能：代码分析、问题检测、优化建议、测试生成
-- 技术：Claude Code 能力 + Prompt 工程 + Agent 工作流
+### 核心功能实现
 
-**选项 C: 数据分析 Agent**
-- 功能：自然语言查询数据库、生成图表、数据洞察
-- 技术：Tool Use + LangGraph + 数据可视化
+- [ ] 完善文档处理模块（支持更多格式）
+- [ ] 完善知识库管理模块（权限、分类）
+- [ ] 优化 RAG 效果（调优参数、A/B 测试）
+- [ ] 实现高级功能：对话导出、搜索历史
+- [ ] 实现配置管理：模型切换、参数调整
 
-**选项 D: 个人知识管理系统**
-- 功能：笔记管理、知识图谱、智能推荐、双向链接
-- 技术：RAG + Embedding + Graph + Claude
+### UI/UX 优化
 
-### 实战任务
+- [ ] 设计统一的 UI 风格
+- [ ] 优化响应速度（异步处理）
+- [ ] 实现移动端适配（响应式设计）
+- [ ] 增加用户引导和帮助文档
+- [ ] 实现暗色主题（可选）
 
-- [ ] 确定项目方向，输出需求文档
-- [ ] 完成架构设计和技术选型
-- [ ] 实现核心功能 MVP
-- [ ] 实现完整的前端交互界面（发挥 Vue3 优势）
-- [ ] 测试、优化、完善文档
-- [ ] 部署上线（可选）
+### 测试与优化
+
+- [ ] 准备测试数据集（不同类型文档）
+- [ ] 进行端到端测试
+- [ ] 性能优化（大文档、高并发）
+- [ ] 修复 Bug 和边界情况
+- [ ] 收集用户反馈并改进
+
+### 文档与部署
+
+- [ ] 编写 README（项目介绍、快速开始）
+- [ ] 编写开发文档（架构说明、API 文档）
+- [ ] 编写部署文档（环境要求、配置说明）
+- [ ] 录制 Demo 视频（可选）
+- [ ] 发布到 GitHub（开源）
 
 ### ✅ 最终完成标志
 
-- [ ] 完成一个可演示、可落地的 AI 应用
-- [ ] 代码质量高、文档完善
+- [ ] 完成一个可演示、可落地的知识库问答系统
+- [ ] 功能完整：文档上传、知识库管理、智能问答、引用溯源
+- [ ] UI 美观易用，响应流畅
+- [ ] 代码质量高，文档完善
+- [ ] 成功部署并可供他人使用
 - [ ] 总结学习历程，输出学习报告

@@ -1,7 +1,7 @@
 # AI 学习路径 - 阶段进度看板
 
 > **当前聚焦**: 阶段 1 - Python + FastAPI 基础
-> **总体完成度**: 0/54 任务 (0%)
+> **总体进度**: 0/5 阶段完成 (0%)
 
 ---
 
@@ -32,67 +32,106 @@
 
 ---
 
-## 📊 阶段 2: Claude API 对接
+## 📊 阶段 2: LLM API 对接与本地部署
 
-**进度**: 0/10 任务完成 (0%)
-**知识沉淀**: `specs/claude-api-integration/spec.md`
+**进度**: 0/15 任务完成 (0%)
+**知识沉淀**: `specs/llm-api-integration/spec.md`
 
 ### 核心里程碑
-- [ ] Messages API 基础调用
-- [ ] Streaming 流式响应实现
-- [ ] 多轮对话上下文管理
-- [ ] Tool Use 工具调用
-- [ ] Vision 多模态对接
-- [ ] 阶段产出：完整 AI 聊天应用
+- [ ] OpenAI API 标准接口掌握
+- [ ] 流式响应与多轮对话
+- [ ] Claude API 高级特性（Tool Use、Vision）
+- [ ] Ollama 本地模型部署
+- [ ] 模型切换与统一接口封装
+- [ ] 阶段产出：支持云端+本地的 AI 聊天应用
 
 ---
 
-## 📊 阶段 3: Prompt 工程
+## 📊 阶段 3: Prompt 工程与上下文管理
 
-**进度**: 0/12 任务完成 (0%)
+**进度**: 0/10 任务完成 (0%)
 **知识沉淀**: `specs/prompt-engineering/spec.md`
 
 ### 核心里程碑
-- [ ] Few-shot & CoT 技巧掌握
-- [ ] 结构化输出设计
+- [ ] Few-shot & CoT 核心技巧
+- [ ] 结构化输出（JSON、Pydantic）
 - [ ] Claude 特有技巧（XML、Prefill）
-- [ ] Prompt 管理方案设计
-- [ ] 阶段产出：Prompt 管理工具或数据提取工具
+- [ ] 上下文窗口管理与截断策略
+- [ ] RAG Prompt 设计（上下文拼接）
+- [ ] 阶段产出：RAG 专用 Prompt 模板
 
 ---
 
-## 📊 阶段 4: RAG 系统
+## 📊 阶段 4: RAG 系统核心技术
 
-**进度**: 0/15 任务完成 (0%)
+**进度**: 0/18 任务完成 (0%)
 **知识沉淀**: `specs/rag-system/spec.md`
 
 ### 核心里程碑
-- [ ] Embedding + 向量数据库掌握
-- [ ] 文档处理与分块策略
-- [ ] 检索优化（Query 改写、HyDE、Rerank）
-- [ ] RAG 评估体系（RAGAS）
-- [ ] 阶段产出：完整知识库问答系统
+- [ ] Embedding 与向量检索原理
+- [ ] 文档解析（PDF、Markdown、HTML）
+- [ ] 文本分块策略与优化
+- [ ] 向量数据库（Chroma）集成
+- [ ] 基础 RAG 流程实现
+- [ ] 检索优化（HyDE、Rerank）
+- [ ] 引用溯源与元数据管理
+- [ ] 阶段产出：完整的知识库问答 API
 
 ---
 
-## 📊 阶段 5: Agent 工作流
+## 📊 阶段 5: LangChain 实战与应用集成
 
-**进度**: 0/12 任务完成 (0%)
-**知识沉淀**: `specs/agent-workflow/spec.md`
+**进度**: 0/15 任务完成 (0%)
+**知识沉淀**: `specs/langchain-application/spec.md`
 
 ### 核心里程碑
-- [ ] LangChain LCEL 与 Tool 集成
-- [ ] LangGraph 状态图掌握
-- [ ] 多 Agent 协作设计
-- [ ] Human-in-the-loop 实现
-- [ ] 阶段产出：复杂 Agent 工作流应用
+- [ ] LangChain 核心概念（LCEL、Chain）
+- [ ] LangChain + Claude API 集成
+- [ ] 使用 LangChain 重构 RAG 系统
+- [ ] 对话历史管理（Memory）
+- [ ] Agent + Tool 集成
+- [ ] Streamlit UI 构建
+- [ ] 知识库管理功能
+- [ ] 阶段产出：LangChain 驱动的知识库应用
 
 ---
 
-## 🏆 最终冲刺
+## 🏆 最终冲刺：Langchain-Chatchat MVP
 
-### 综合实战项目（待定方向）
-- 选项 A: 智能文档助手
-- 选项 B: 代码 Review 助手
-- 选项 C: 数据分析 Agent
-- 选项 D: 个人知识管理系统
+### 项目目标
+**构建一个类似 Langchain-Chatchat 的本地知识库问答系统**
+
+### 核心功能
+- ✅ 文档上传与解析（PDF、Markdown、TXT）
+- ✅ 知识库管理（创建、删除、切换）
+- ✅ 智能问答（基于 RAG）
+- ✅ 多轮对话（上下文记忆）
+- ✅ 引用溯源（显示来源文档）
+- ✅ Streamlit Web UI
+
+### 技术架构
+```
+前端: Streamlit (简单快速)
+后端: FastAPI (API 服务)
+LLM: Claude API (替代 ChatGLM)
+框架: LangChain (RAG 编排)
+向量库: Chroma (本地存储)
+Embedding: Voyage AI (云端) 或 本地模型
+```
+
+### 实战任务
+- [ ] 完成需求文档和架构设计
+- [ ] 实现文档处理模块
+- [ ] 实现知识库管理模块
+- [ ] 实现 RAG 问答核心
+- [ ] 实现多轮对话功能
+- [ ] 构建 Streamlit UI
+- [ ] 完整测试与优化
+- [ ] 编写部署文档
+
+### ✅ 最终完成标志
+- [ ] 完成一个可演示的知识库问答系统
+- [ ] 支持多种文档格式上传
+- [ ] 问答效果良好，引用准确
+- [ ] UI 美观易用
+- [ ] 代码规范，文档完善
