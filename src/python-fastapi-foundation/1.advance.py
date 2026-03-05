@@ -7,6 +7,7 @@ Python 进阶语法练习 - 1.3 + 1.4 阶段
 # 难度：⭐⭐ (基础)
 # JS 对比：类似 TypeScript Zod
 
+
 def exercise_1_pydantic_basics():
     """练习1：Pydantic 基础 - 定义第一个 BaseModel"""
 
@@ -103,10 +104,7 @@ def exercise_3_pydantic_nested():
         name: str
         address: Address  # 嵌套 Address 模型
 
-    user = User(
-        name="Alice",
-        address={"city": "Beijing", "country": "China"}
-    )
+    user = User(name="Alice", address={"city": "Beijing", "country": "China"})
     print(user.address.city)  # Beijing
 
     # 练习题：嵌套模型
@@ -225,6 +223,7 @@ def exercise_5_pydantic_serialization():
 # 难度：⭐⭐⭐⭐ (较难)
 # JS 对比：类似 JavaScript Promise/async-await
 
+
 def exercise_6_async_basic():
     """练习6：async/await 基础"""
 
@@ -334,9 +333,19 @@ def exercise_8_async_event_loop():
 
     # 练习题：执行顺序分析
     # TODO: 预测以下代码的输出顺序
-    async def a(): print("a start"); await asyncio.sleep(0); print("a end")
-    async def b(): print("b start"); await asyncio.sleep(0); print("b end")
-    async def c(): print("c start"); print("c end")  # 同步执行
+    async def a():
+        print("a start")
+        await asyncio.sleep(0)
+        print("a end")
+
+    async def b():
+        print("b start")
+        await asyncio.sleep(0)
+        print("b end")
+
+    async def c():
+        print("c start")
+        print("c end")  # 同步执行
 
     # asyncio.run(asyncio.gather(a(), b(), c()))
 
@@ -409,6 +418,7 @@ def exercise_10_async_vs_sync():
 
 
 # ==================== 综合练习 ====================
+
 
 def final_pydantic_exercise():
     """综合练习：使用 Pydantic 构建 API 模型"""

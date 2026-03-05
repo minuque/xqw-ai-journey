@@ -20,11 +20,11 @@
 
 ### 1.2 Python 语法快速上手
 
-- [ ] 练习 Type Hints：函数注解、变量注解、泛型
-- [ ] 练习列表推导式、字典推导式（对比 JS map/filter）
-- [ ] 理解装饰器原理（对比 JS Decorator 提案）
-- [ ] 学习 dataclass（对比 TypeScript class）
-- [ ] 理解 Python 的 None、True/False（对比 JS null/undefined）
+- [x] 练习 Type Hints：函数注解、变量注解、泛型
+- [x] 练习列表推导式、字典推导式（对比 JS map/filter）
+- [x] 理解装饰器原理（对比 JS Decorator 提案）
+- [x] 学习 dataclass（对比 TypeScript class）
+- [x] 理解 Python 的 None、True/False（对比 JS null/undefined）
 
 ### 1.3 Pydantic 数据模型
 
