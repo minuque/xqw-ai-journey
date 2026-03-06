@@ -1,4 +1,49 @@
-.obsidian/*
-.ruff_cache/*
-.idea/*
-.claude/*
+# ==================== Python ====================
+# 字节码
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# pip/uv
+.python-version
+*.egg-info/
+dist/
+build/
+*.egg
+
+# 类型检查
+.mypy_cache/
+.pytype/
+.pyre/
+
+# 测试覆盖率
+.coverage
+htmlcov/
+*.cover
+
+# pytest
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# ==================== IDE ====================
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ==================== 项目相关 ====================
+.obsidian/
+.ruff_cache/
+.claude/
+.env
+*.log
