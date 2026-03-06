@@ -9,9 +9,8 @@ Python 基础语法练习 - 1.2 阶段
 
 import math
 import time
+from dataclasses import dataclass
 from typing import Optional
-
-from attr import dataclass
 
 
 # ==================== 通用装饰器（模块级别）===================

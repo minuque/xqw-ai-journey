@@ -1,35 +1,4 @@
-.obsidian/app.json
-.obsidian/appearance.json
-.obsidian/canvas.json
-.obsidian/community-plugins.json
-.obsidian/core-plugins.json
-.obsidian/graph.json
-.obsidian/workspace.json
-.obsidian/plugins/calendar/data.json
-.obsidian/plugins/calendar/main.js
-.obsidian/plugins/calendar/manifest.json
-.obsidian/plugins/claudian/data.json
-.obsidian/plugins/claudian/main.js
-.obsidian/plugins/claudian/manifest.json
-.obsidian/plugins/claudian/styles.css
-.obsidian/plugins/easy-tracker/main.js
-.obsidian/plugins/easy-tracker/manifest.json
-.obsidian/plugins/easy-tracker/styles.css
-.obsidian/plugins/obsidian-excalidraw-plugin/data.json
-.obsidian/plugins/obsidian-excalidraw-plugin/main.js
-.obsidian/plugins/obsidian-excalidraw-plugin/manifest.json
-.obsidian/plugins/obsidian-excalidraw-plugin/styles.css
-.obsidian/plugins/terminal/data.json
-.obsidian/plugins/terminal/main.js
-.obsidian/plugins/terminal/manifest.json
-.obsidian/plugins/terminal/styles.css
-.obsidian/themes/Cupertino/manifest.json
-.obsidian/themes/Cupertino/theme.css
-.obsidian/themes/Cybertron/manifest.json
-.obsidian/themes/Cybertron/theme.css
-.obsidian/themes/Dracula Official/manifest.json
-.obsidian/themes/Dracula Official/theme.css
-.obsidian/themes/Minimal/manifest.json
-.obsidian/themes/Minimal/theme.css
-.obsidian/themes/Tokyo Night/manifest.json
-.obsidian/themes/Tokyo Night/theme.css
+.obsidian/*
+.ruff_cache/*
+.idea/*
+.claude/*

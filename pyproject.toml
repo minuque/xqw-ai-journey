@@ -1,7 +1,10 @@
 [project]
 name = "xqw-ai-journey"
 version = "0.1.0"
-description = "Add your description here"
+description = "get shit done"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic>=2.12.5",
+    "ruff>=0.15.4",
+]
