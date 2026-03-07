@@ -9,7 +9,7 @@ Python 基础语法练习 - 1.2 阶段
 
 import math
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 

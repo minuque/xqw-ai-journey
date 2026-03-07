@@ -28,20 +28,20 @@
 
 ### 1.3 Pydantic 数据模型
 
-- [ ] 定义第一个 BaseModel，理解运行时校验
-- [ ] 练习字段类型、默认值、可选字段
-- [ ] 练习嵌套模型、模型继承
-- [ ] 练习自定义 Validator（字段校验逻辑）
-- [ ] 练习模型序列化：model_dump()、model_dump_json()
-- [ ] 对比 Pydantic 与 TypeScript Zod
+- [x] 定义第一个 BaseModel，理解运行时校验
+- [x] 练习字段类型、默认值、可选字段
+- [x] 练习嵌套模型、模型继承
+- [x] 练习自定义 Validator（字段校验逻辑）
+- [x] 练习模型序列化：model_dump()、model_dump_json()
+- [x] 对比 Pydantic 与 TypeScript Zod
 
 ### 1.4 Python 异步编程
 
-- [ ] 理解 async/await 语法（对比 JS Promise）
-- [ ] 练习 asyncio.gather()（对比 Promise.all）
-- [ ] 理解事件循环机制（对比 JS Event Loop）
-- [ ] 练习异步上下文管理器（async with）
-- [ ] 对比 Python asyncio 与 JS async 的差异
+- [x] 理解 async/await 语法（对比 JS Promise）
+- [x] 练习 asyncio.gather()（对比 Promise.all）
+- [x] 理解事件循环机制（对比 JS Event Loop）
+- [x] 练习异步上下文管理器（async with）
+- [x] 对比 Python asyncio 与 JS async 的差异
 
 ### 1.5 FastAPI 基础开发
 
