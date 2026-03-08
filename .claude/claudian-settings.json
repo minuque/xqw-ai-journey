@@ -62,7 +62,7 @@
     "scrollDownKey": "s",
     "focusInputKey": "i"
   },
-  "locale": "en",
+  "locale": "zh-CN",
   "claudeCliPath": "",
   "claudeCliPathsByHost": {
     "minuque-dev": "C:\\Users\\10537\\.local\\bin\\claude.exe"

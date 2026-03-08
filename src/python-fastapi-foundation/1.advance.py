@@ -68,8 +68,6 @@ def exercise_1_pydantic_basics():
 def exercise_2_pydantic_fields():
     """练习2：Pydantic 字段类型、默认值、可选字段"""
 
-    from typing import Optional
-
     from pydantic import BaseModel
 
     # 2.1 默认值字段
@@ -112,7 +110,7 @@ def exercise_2_pydantic_fields():
         price: float
         description: Optional[str] = None
 
-    product = Product(name="xqw product", price=float("18.0"))
+    product = Product(name="xqw product", price=18.0)
     print(product)
 
     # 2.3 必填字段与默认值对比
@@ -123,7 +121,6 @@ def exercise_2_pydantic_fields():
     # - username: str（必填，最少 3 个字符）
     # - password: str（必填，最少 6 个字符）
     # - email: str | None（可选）
-    from pydantic import Field
 
     class RegisterModel(BaseModel):
         username: str = Field(min_length=3)
@@ -671,11 +668,11 @@ def exercise_9_async_context_manager():
 
         async def __aenter__(self):
             print(f"[{self.name}] 开始...")
-            self.start_time = asyncio.get_event_loop().time()
+            self.start_time = asyncio.get_running_loop().time()
             return self  # 返回 self，可以通过 as 捕获
 
         async def __aexit__(self, exc_type, exc_val, exc_tb):
-            elapsed = asyncio.get_event_loop().time() - self.start_time  # type: ignore
+            elapsed = asyncio.get_running_loop().time() - self.start_time  # type: ignore
             print(f"[{self.name}] 结束，耗时: {elapsed:.2f}秒")
             return False  # 不抑制异常
 
@@ -852,16 +849,21 @@ def exercise_10_async_vs_sync():
             return "fetch success"
         raise ValueError("fetch error")
 
-    async def fetch_with_retry(url: str, max_retries: int = 3) -> Optional[dict]:
+    async def fetch_with_retry(url: str, max_retries: int = 3) -> dict:
+        last_error = None
         for i in range(max_retries):
             try:
                 res = await random_fetch(url)
                 return {"result": res}
             except ValueError as e:
-                await asyncio.sleep(1)  # 失败后等待 1 秒重试
-                print(f"捕获错误: {e}")
+                last_error = e
+                if i < max_retries - 1:  # 不是最后一次重试才等待
+                    await asyncio.sleep(1)
+                    print(f"捕获错误: {e}，正在重试...")
+        # 所有重试都失败，抛出最后一个错误
+        raise last_error  # type: ignore
 
-    print(asyncio.run(fetch_with_retry("xqw.com", 3)))
+    asyncio.run(fetch_with_retry("xqw.com", 3))
 
 
 def exercise_11_async_queue():

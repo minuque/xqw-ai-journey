@@ -114,7 +114,7 @@ def exercise_2_type_hints():
 
     # 2.3 可选类型 Optional
     # TS: function findUser(id: number): User | null { }
-    from typing import Optional
+    # Optional 已在文件顶部导入
 
     def find_user(user_id: int) -> Optional[str]:
         """返回用户名，如果找不到返回 None"""
@@ -246,7 +246,7 @@ def exercise_4_generics():
 def exercise_5_dataclass():
     """练习5：dataclass - Python 的数据类"""
 
-    from dataclasses import dataclass
+    # dataclass 已在文件顶部导入
 
     # 5.1 基础 dataclass
     # TS: class User { constructor(public name: string, public age: number) {} }
@@ -488,7 +488,7 @@ def final_exercise():
     @dataclass
     class TaskManage:
         next_id: int = 0
-        collections: list[Task] = []
+        collections: list[Task] = field(default_factory=list)  # 使用 field 避免可变默认值陷阱
 
         @log_call  # 添加日志装饰器
         def add_task(self, title: str) -> Task:
